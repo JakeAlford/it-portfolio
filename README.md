@@ -2,11 +2,11 @@
 
 A static, responsive portfolio website for [Jake Alford](https://github.com/JakeAlford). It is based on his verified home-lab projects, with the same dark navy, teal and warm-cream palette as his current application PDF.
 
-**Status:** Website source published. GitHub Pages deployment is managed by `.github/workflows/deploy.yml` when enabled.
+**Status:** Published at https://jakealford.github.io/it-portfolio/. GitHub Actions deploys changes from `main`.
 
 ## What's included
 
-- `index.html`: mobile-friendly overview, verified outcomes, filterable project cards, technical skills, work approach, and contact.
+- `index.html`: mobile-friendly overview, verified outcomes, filterable project cards, technical skills, work approach, and contact (with mailto and a copy-email fallback).
 - `projects/`: 11 individual project case-study pages.
 - `content/projects.json`: editable source of truth for project descriptions and status.
 - `scripts/build_site.py`: builds the homepage and case-study pages from `content/projects.json` (Python standard library only).
