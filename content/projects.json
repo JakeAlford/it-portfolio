@@ -1,0 +1,133 @@
+{
+  "owner": "Jake Alford",
+  "location": "Coventry, UK",
+  "last_reviewed": "2026-11-19",
+  "tagline": "Building, fixing and learning how IT systems work.",
+  "summary": "I'm working towards a role in IT Support or junior infrastructure. Outside my retail job, I run a home lab where I can try things properly, break them, fix them and understand why they work.",
+  "contact_email": "jakewalford01@outlook.com",
+  "github_username": "JakeAlford",
+  "featured": ["windows-server-hyper-v", "network-dns-remote-access", "homelab-manager", "minecraft-server", "monitoring-alerts", "vaultwarden-raspberry-pi"],
+  "projects": [
+    {
+      "slug": "windows-server-hyper-v", "title": "Windows Server & Hyper-V", "category": "Infrastructure", "status": "Operational",
+      "short": "A dedicated Windows Server host running separate Debian virtual machines for DNS and monitoring.",
+      "lead": "I wanted one reliable machine where I could run different services without everything depending on the same operating system. That became the starting point for most of my other projects.",
+      "goal": "Build a practical home lab with enough separation to learn how virtual machines, networking and services fit together.",
+      "work": ["Installed Windows Server 2022 Datacenter on a Dell OptiPlex 3040 Mini Tower with an Intel i5-6600.", "Configured Hyper-V networking and separate Debian VMs for Pi-hole and Uptime Kuma.", "Set up SSH administration for Linux services and checked VM connectivity and service reachability."],
+      "proof": ["Pi-hole and Uptime Kuma were running on separate Debian virtual machines.", "Remote SSH administration was tested as part of the home-lab setup."],
+      "learned": "Separating services makes it easier to make changes and work out exactly where a problem is coming from.",
+      "next": "Keep documenting the configuration and improve backup and recovery testing.",
+      "tech": ["Windows Server 2022", "Hyper-V", "Debian", "SSH", "Virtual switches"], "updated": "2026-11-19"
+    },
+    {
+      "slug": "network-dns-remote-access", "title": "Networking, DNS & remote access", "category": "Networking", "status": "Operational",
+      "short": "Troubleshooting a real home network: DNS filtering, double NAT, managed switching and private remote access.",
+      "lead": "A lot of my network learning has come from trying to work out why something doesn't connect or why a service behaves differently from one device to another.",
+      "goal": "Get predictable local connectivity and a safe way to administer my services without opening unnecessary internet-facing ports.",
+      "work": ["Configured the ASUS router to use a Pi-hole Debian VM for DNS and checked its query logs.", "Investigated double NAT between the FibreNest/Adtran ISP gateway and the ASUS router, including how it affects inbound connections.", "Configured an Aruba managed PoE switch and tested the wired route between the router, switch and PC.", "Set up Tailscale for private remote connectivity and used SSH for administration."],
+      "proof": ["Confirmed DNS queries were reaching Pi-hole and filtering was taking effect.", "Measured around 850 Mbps on a wired speed test after troubleshooting the switch connection, against an 800 Mbps fibre service target.", "Tailscale and SSH were configured for remote device management."],
+      "learned": "Checking the actual route, DNS behaviour and test results is far more useful than changing settings at random.",
+      "next": "Continue working through ISP limitations for game hosting that needs external inbound access.",
+      "tech": ["TCP/IP", "DNS", "Pi-hole", "Aruba PoE", "ASUS", "NAT", "Tailscale", "SSH"], "updated": "2026-11-19"
+    },
+    {
+      "slug": "homelab-manager", "title": "HomeLab Manager", "category": "Software", "status": "In development",
+      "short": "A Kotlin Android app with a separate .NET backend for managing home-lab devices and users.",
+      "lead": "As the home lab grew, I wanted one place to keep track of devices and eventually control the systems behind them. Rather than just sketching an idea, I started building the app and backend.",
+      "goal": "Make an Android management app that can grow from inventory and account management into secure infrastructure controls.",
+      "work": ["Built Android screens in Kotlin and Jetpack Compose for phones and tablets.", "Created a C# ASP.NET Core (.NET 10) API with SQLite identity storage.", "Implemented administrator bootstrap, login, mandatory password changes for new users and user-management functions.", "Used Postman and automated API tests to check authentication and administrator workflows."],
+      "proof": ["A recorded backend test run passed all 55 automated API tests.", "Administrator bootstrap and first-login password-change flows were tested."],
+      "learned": "This has taught me a lot about keeping a user interface separate from a backend, testing the important flows and thinking about access control properly.",
+      "next": "Keep building the integrations and test the app against real home-lab services. Not all intended monitoring and remote controls are implemented yet.",
+      "tech": ["Kotlin", "Jetpack Compose", "C#", "ASP.NET Core", ".NET 10", "SQLite", "Postman", "API tests"], "updated": "2026-11-19"
+    },
+    {
+      "slug": "monitoring-alerts", "title": "Monitoring & Discord alerts", "category": "Operations", "status": "Operational",
+      "short": "Uptime Kuma in its own VM, checking service availability and sending alerts to Discord.",
+      "lead": "Once I had several services running, I wanted to know when one stopped responding instead of finding out by accident.",
+      "goal": "Have a straightforward way to check core services and get notified when something needs attention.",
+      "work": ["Set up Uptime Kuma on a separate Debian Hyper-V VM.", "Configured checks for home-lab services and network devices.", "Connected Discord notifications to the monitoring workflow."],
+      "proof": ["Service monitoring and Discord alerts were tested in the home lab."],
+      "learned": "A failed monitor doesn't tell you everything. It's a reason to investigate DNS, routing, ports or service logs instead of assuming the application itself is broken.",
+      "next": "Refine the monitoring checks as more services are added.",
+      "tech": ["Uptime Kuma", "Debian", "Hyper-V", "Discord webhooks", "Availability checks"], "updated": "2026-11-19"
+    },
+    {
+      "slug": "vaultwarden-raspberry-pi", "title": "Vaultwarden on Raspberry Pi", "category": "Security", "status": "Operational",
+      "short": "A self-hosted password manager on a Raspberry Pi Zero 2 W, used across my own devices.",
+      "lead": "I wanted to host something I would actually use every day, rather than install a service purely for a test.",
+      "goal": "Set up a small Linux device to host a useful service with sensible account security.",
+      "work": ["Deployed Vaultwarden on a Raspberry Pi Zero 2 W.", "Configured administration, accounts and two-factor authentication.", "Checked password synchronisation across personal devices and added availability monitoring."],
+      "proof": ["Cross-device synchronisation worked during testing.", "The service was monitored as part of the home lab."],
+      "learned": "Self-hosting means taking responsibility for service availability and recovery, not just getting the application to start.",
+      "next": "Complete a proper backup and recovery test; that work is still outstanding.",
+      "tech": ["Raspberry Pi", "Linux", "Vaultwarden", "2FA", "Monitoring"], "updated": "2026-11-19"
+    },
+    {
+      "slug": "minecraft-server", "title": "Minecraft server hosting", "category": "Server hosting", "status": "Locally tested / stopped",
+      "short": "A Paper server on Debian 13, tested on the local network with access controls and monitoring.",
+      "lead": "I wanted to host Minecraft for friends and use it as a way to learn more about running a service that other people connect to.",
+      "goal": "Set up a game server in its own VM, test how it behaves and work out what needs doing before inviting friends to connect remotely.",
+      "work": ["Set up a Debian 13 Hyper-V VM with Java and the Paper server.", "Configured a systemd service, firewall rules, a six-player whitelist, a DHCP reservation and RCON access protected through SSH.", "Added monitoring and Discord alerts, then checked local connectivity and performance."],
+      "proof": ["Joined successfully from the local network.", "Observed 20 TPS during a one-player test, not a six-player load test."],
+      "learned": "Getting a server working on the LAN is different from making it securely reachable from the internet, especially behind an ISP-controlled gateway.",
+      "next": "The server was deliberately stopped on 19 November 2026 while I investigated FibreNest external-access restrictions. External access and six-player testing have not been confirmed.",
+      "tech": ["Debian 13", "Paper", "Java", "systemd", "UFW", "Hyper-V", "Uptime Kuma"], "updated": "2026-11-19"
+    },
+    {
+      "slug": "android-tv-dashboard", "title": "Android TV control centre", "category": "Software", "status": "Working prototype",
+      "short": "A Google TV-style dashboard with remote-friendly navigation, built and tested on Chromecast hardware.",
+      "lead": "I also wanted a dashboard that I could use from the sofa, where a normal touch-screen interface wouldn't make sense.",
+      "goal": "Build a TV-friendly interface for the home lab with clear navigation and room for future monitoring and controls.",
+      "work": ["Built a Google TV-style Android TV layout with separate navigation for home-lab sections.", "Tested an app build on Chromecast 4K hardware and worked through Android TV compatibility issues."],
+      "proof": ["Remote-friendly navigation and an app build were tested on physical hardware."],
+      "learned": "Testing on a real device has shown me limitations that are easy to miss in an emulator.",
+      "next": "Live hardware telemetry, service controls and Wake-on-LAN remain planned features, not completed integrations.",
+      "tech": ["Android TV", "Kotlin", "Android Studio", "ADB", "Chromecast"], "updated": "2026-11-19"
+    },
+    {
+      "slug": "docker-storage", "title": "Docker & storage experiments", "category": "Experiments", "status": "Completed / redesigned",
+      "short": "Docker services, Linux shares, storage permissions and media-stack experiments.",
+      "lead": "Trying a self-hosted media setup gave me a practical reason to learn Docker, storage mounts and Linux permissions.",
+      "goal": "Understand how multiple services connect to shared storage and why permissions or startup behaviour cause problems.",
+      "work": ["Trialled Ubuntu Server, Docker and Compose services.", "Worked with SMB/CIFS network mounts, share permissions and persistence after restarts.", "Tested parts of a Plex, Sonarr, Radarr and Prowlarr stack and later cleaned up retired test services and shares."],
+      "proof": ["The storage and service configuration work was tested as an experiment, not retained as a claimed production service."],
+      "learned": "I learned more from sorting out mounts and permissions than from simply installing applications.",
+      "next": "A Discord-first media request workflow remains a design idea, not a deployed service.",
+      "tech": ["Linux", "Docker Compose", "SMB/CIFS", "Permissions", "Plex", "Sonarr", "Radarr", "Prowlarr"], "updated": "2026-11-19"
+    },
+    {
+      "slug": "android-kiosk", "title": "Android device kiosk", "category": "Experiments", "status": "Hands-on experiment",
+      "short": "Reusing an older Android phone as a practical home-lab dashboard.",
+      "lead": "I had a spare phone and wanted to see how far I could take it as a dedicated dashboard instead of leaving it unused.",
+      "goal": "Learn about device setup, debugging and the limitations of older Android hardware.",
+      "work": ["Experimented with a Moto e(7), rooting and Magisk.", "Used Termux and remote-access tools while planning a kiosk-style view for home-lab services.", "Worked with device restrictions, app installation and debugging tools."],
+      "proof": ["Hands-on Android configuration and debugging work was carried out on the spare device."],
+      "learned": "Older devices can still be useful, but compatibility and maintenance matter just as much as getting a dashboard on screen.",
+      "next": "This is an experiment rather than a production monitoring endpoint.",
+      "tech": ["Android", "Magisk", "Termux", "ADB", "Kiosk workflows"], "updated": "2026-11-19"
+    },
+    {
+      "slug": "rack-nas-planning", "title": "Network rack & NAS planning", "category": "Hardware", "status": "Design stage",
+      "short": "A measured open-rack plan built around the equipment I already own and future expansion.",
+      "lead": "As the home lab started taking up more room, I wanted to work out a neater layout that would still be easy to reach and maintain.",
+      "goal": "Plan a floor-standing rack that fits existing hardware now and leaves space for a NAS later.",
+      "work": ["Measured and planned a dark-walnut floor-standing unit with a 9U black open-frame rack section.", "Accounted for the Aruba PoE switch, patch panel, upright Dell server and audio equipment.", "Compared diskless four-bay NAS options as a possible future addition."],
+      "proof": ["A measured design was prepared; the rack and NAS are not being represented as completed installations."],
+      "learned": "Physical space, airflow, cable access and future maintenance all affect a good infrastructure layout.",
+      "next": "Build and verify the physical rack, then select NAS hardware when appropriate.",
+      "tech": ["Rack planning", "Patch panels", "Cabling", "Aruba switching", "NAS research"], "updated": "2026-11-19"
+    },
+    {
+      "slug": "smart-light-integration", "title": "Smart-light integration", "category": "Planning", "status": "Planned",
+      "short": "Planning to integrate existing WiZ tunable-white bulbs into HomeLab Manager.",
+      "lead": "I'd like my home-lab app to control a few useful devices around the house as well as servers and networking equipment.",
+      "goal": "Add brightness and warm-to-cool white controls for existing WiZ bulbs.",
+      "work": ["Documented the current three-bulb setup and the control requirements.", "Compared possible integration approaches for the Android app and backend."],
+      "proof": ["Requirements were discussed and documented; there is no completed integration to demonstrate yet."],
+      "learned": "Planning integrations properly means checking local connectivity, device features and API support before writing the controls.",
+      "next": "Implement and test a safe integration when this moves up the priority list.",
+      "tech": ["WiZ", "Smart-home planning", "Android", "Integration design"], "updated": "2026-11-19"
+    }
+  ]
+}
